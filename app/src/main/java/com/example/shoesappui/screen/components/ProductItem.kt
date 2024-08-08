@@ -3,6 +3,7 @@ package com.example.shoesappui.screen.components
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
@@ -26,7 +27,9 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -98,7 +101,25 @@ fun ProductItem(
                     .offset(30.dp, (-20).dp)
                     .alpha(1f)
             )
-
+            Column(
+                modifier = Modifier.align(Alignment.BottomEnd)
+            ) {
+                Text(
+                    text = "Rs. ${product.discountPrice}", fontWeight = FontWeight.Bold,
+                    fontSize = 18.sp,
+                    modifier = Modifier.padding(end = 8.dp)
+                )
+                Text(
+                    text = "Rs. ${product.price}",
+                    fontSize = 12.sp,
+                    modifier = Modifier
+                        .padding(end = 8.dp, bottom = 8.dp)
+                        .align(Alignment.End),
+                    style = TextStyle(
+                        textDecoration = TextDecoration.LineThrough
+                    )
+                )
+            }
         }
     }
 }
